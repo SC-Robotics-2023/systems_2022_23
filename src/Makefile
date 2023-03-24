@@ -17,7 +17,9 @@ SCIENCE_PACKAGE = science
 # AUTONOMY_PACKAGE =
 
 
-# TELECOM_PACKAGE =
+TELECOM_PACKAGE = zed_cv
+ZED_PUB = zed_pub
+ZED_SUB = zed_sub
 
 
 # ARM_PACKAGE =
@@ -81,6 +83,31 @@ science_sub:
 # ===================================================
 
 
+
+
+
+# ==== AUTONOMY =====================================
+# ===================================================
+
+
+
+
+
+# ==== TELECOM ======================================
+telecom_pub:
+	$(ROSMAKE) $(TELECOM_PACKAGE) $(ZED_PUB)
+
+telecom_sub:
+	$(ROSMAKE) $(TELECOM_PACKAGE) $(ZED_SUB)
+
+# ===================================================
+
+
+
+
+
+# ==== ARM ==========================================
+# ===================================================
 
 
 
