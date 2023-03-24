@@ -1,6 +1,0 @@
-log/
-build/
-install/
-
-# for macos
-.DS_Store
