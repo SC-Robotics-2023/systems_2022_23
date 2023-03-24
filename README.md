@@ -12,3 +12,8 @@ Log 1: installed gazebo for Humble. Followed these instructions:
  Log 2: installed xacro and joint state publisher GUI
  	sudo apt install ros-humble-xacro (already installed)
  	sudo apt install ros-humble-joint-state-publisher-gui
+ 	
+ 	ran rover URDF with following commands:
+ 	ros2 launch helios rsp.launch.py (to publish URDF)
+ 	ros2 run joint_state_publisher_gui joint_state_publisher_gui
+ 	rviz2 (to run ROS visualizer)
