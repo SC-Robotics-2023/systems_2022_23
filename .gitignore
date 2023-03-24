@@ -51,3 +51,10 @@ qtcreator-*
 CATKIN_IGNORE
 
 .vscode
+# Custom ignores
+*.log
+dev_ws/build
+dev_ws/install
+dev_ws/log
+
+.vscode
