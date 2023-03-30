@@ -1,9 +1,9 @@
 # systems_2022_23
 SCR 2022-23's general systems; General range components used in different rover modules
 
-Log 1: installed gazebo for Humble. Followed these instructions: 
-	 sudo sh -c 'echo "deb [arch=$(dpkg --print-architecture)] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" > /etc/apt/sources.list.d/ros2-latest.list'
-	curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+Log 1: installed gazebo for Humble. Followed these instructions:  https://github.com/gazebosim/ros_gz/tree/humble
+	sudo sh -c 'echo "deb [arch=$(dpkg --print-architecture)] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" > /etc/apt/sources.list.d/ros2-latest.list'
+ 	curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
  	sudo apt-get update
  	sudo apt install ros-humble-ros-ign
  	
@@ -17,3 +17,7 @@ Log 1: installed gazebo for Humble. Followed these instructions:
  	ros2 launch helios rsp.launch.py (to publish URDF)
  	ros2 run joint_state_publisher_gui joint_state_publisher_gui
  	rviz2 -d src/helios/config/view_bot.rviz (to run ROS visualizer)
+ 	
+Log 3: setting up gazebo simulation: https://docs.ros.org/en/humble/Tutorials/Advanced/Simulators/Gazebo.html
+install gazebo bridge
+	sudo apt-get install ros-humble-ros-ign-bridge
