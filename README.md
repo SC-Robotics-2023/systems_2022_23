@@ -6,7 +6,7 @@ step 1: installed gazebo ignition for Humble. Followed these instructions: https
  	sudo apt install ros-humble-ros-ign
  	
  test with: ign gazebo
- run with: ros2 launch ros_gz_sim gz_sim.launch.py
+ run with: ros2 launch ros_gz_sim gz_sim.launch.py gz_args:="src/helios/worlds/my_world.sdf"
  
  
  step 2: installed xacro and joint state publisher GUI
@@ -27,5 +27,13 @@ install gazebo bridge
 convert xacro to urdf: xacro src/helios/description/robot.urdf.xacro > src/helios/description/robot.urdf
 convert urdf to sdf: ign sdf -p src/helios/description/robot.urdf > src/helios/description/robot.sdf
 load sdf into gazebo: ign service -s /world/empty/create --reqtype ignition.msgs.EntityFactory --reptype ignition.msgs.Boolean --timeout 1000 --req 'sdf_filename: "src/helios/description/robot.sdf", name: "helios"'
+
+one-liner: xacro src/helios/description/robot.urdf.xacro > src/helios/description/build/robot.urdf && ign sdf -p src/helios/description/build/robot.urdf > src/helios/description/build/robot.sdf && ign service -s /world/empty/create --reqtype ignition.msgs.EntityFactory --reptype ignition.msgs.Boolean --timeout 1000 --req 'sdf_filename: "src/helios/description/build/robot.sdf", name: "helios"'
+
+Log 4: 
+install ros2_control:
+	sudo apt install ros-humble-ros2-control ros-humble-ros2-controllers
+
+build ros_gz_control from source:
 
 
