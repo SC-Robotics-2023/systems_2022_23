@@ -26,20 +26,38 @@ def generate_launch_description():
     # Include the Gazebo launch file, provided by the gazebo_ros package
     gazebo = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
-                    get_package_share_directory('gazebo_ros'), 'launch', 'gazebo.launch.py')]),
+                    get_package_share_directory('ros_gz_sim'), 'launch', 'gz_sim.launch.py'
+                )]), launch_arguments={'gz_args' : 'src/systems_2022_23/helios/worlds/my_world.sdf'}.items()
              )
 
     # Run the spawner node from the gazebo_ros package. The entity name doesn't really matter if you only have a single robot.
-    spawn_entity = Node(package='gazebo_ros', executable='spawn_entity.py',
+    #NOTE: need to change to work with ignition
+    spawn_entity = Node(package='ros_gz_sim', executable='create',
                         arguments=['-topic', 'robot_description',
-                                   '-entity', 'my_bot'],
+                                   '-entity', 'helios'],
                         output='screen')
 
+    #NOTE not currently working
+    # Run spawner node for differential drive controller
+    diff_drive_spawner = Node(
+        package='controller_manager',
+        executable='spawner.py',
+        arguments=['diff_cont'],
+    )
 
+    #NOTE not currently working
+    # Run spawner node for joint broadcaster
+    joint_broad_spawner = Node(
+        package='controller_manager',
+        executable='spawner.py',
+        arguments=['joint_broad'],
+    )
 
     # Launch them all!
     return LaunchDescription([
         rsp,
         gazebo,
         spawn_entity,
+        #diff_drive_spawner,
+        #joint_broad_spawner,
     ])
