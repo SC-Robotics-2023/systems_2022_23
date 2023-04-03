@@ -23,13 +23,13 @@ Log 3: setting up ros to gazebo bridge:
 install gazebo bridge
 	sudo apt-get install ros-humble-ros-ign-bridge
 	
+FOR DEBUG ONLY convert from xacro/urdf to sdf
 convert xacro to urdf: xacro src/helios/description/robot.urdf.xacro > src/helios/description/robot.urdf
-
 convert urdf to sdf: ign sdf -p src/helios/description/robot.urdf > src/helios/description/robot.sdf
-
 load sdf into gazebo: ign service -s /world/empty/create --reqtype ignition.msgs.EntityFactory --reptype ignition.msgs.Boolean --timeout 1000 --req 'sdf_filename: "src/helios/description/robot.sdf", name: "helios"'
 
-one-liner: xacro src/helios/description/robot.urdf.xacro > src/helios/description/build/robot.urdf && ign sdf -p src/helios/description/build/robot.urdf > src/helios/description/build/robot.sdf && ign service -s /world/empty/create --reqtype ignition.msgs.EntityFactory --reptype ignition.msgs.Boolean --timeout 1000 --req 'sdf_filename: "src/helios/description/build/robot.sdf", name: "helios"'
+Log 4: launch sim with rover with:
+	ros2 launch helios launch_sim.launch.py
 
 Log 4: 
 install ros2_control:
