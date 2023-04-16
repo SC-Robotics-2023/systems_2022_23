@@ -45,3 +45,4 @@ sudo apt install git -y
 
 
 ##FOR DRIVE - separate into separate bash script##
+sudo apt-get install python3-pygame -y
