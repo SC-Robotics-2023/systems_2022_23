@@ -28,6 +28,10 @@
     <gazebo reference="zed2i_link">
         <material>Gazebo/Black</material>
     </gazebo>
+
+    <gazebo reference="lidar_link">
+        <material>Gazebo/Grey</material>
+    </gazebo>
     
 
     <!-- TODO change later to use gazebo_ros_control plugin instead -->    
@@ -51,7 +55,7 @@
 
     <link name="zed2i_link_optical"></link>
 
-    <!-- add gazebo setup for camera-->
+    <!-- Gazebo setup for camera-->
     <gazebo reference="zed2i_link">
         <sensor type="camera" name="zed2i">
             <update_rate>20</update_rate>
@@ -82,8 +86,7 @@
     </gazebo>
 
 
-    <!-- Add gazebo setup for LIDAR -->
-    <!-- lidar -->
+    <!-- Gazebo setup for LIDAR -->
     <gazebo reference="lidar_link">
         <sensor type="gpu_ray" name="lidar"> <!-- "gpu_ray" to use GPU, "ray" to use CPU -->
             <pose>0 0 0 0 0 0</pose>
@@ -94,8 +97,8 @@
                     <horizontal>
                         <samples>720</samples>
                         <resolution>1</resolution>
-                        <min_angle>-1.570796</min_angle>
-                        <max_angle>1.570796</max_angle>
+                        <min_angle>-2.35619</min_angle>
+                        <max_angle>2.35619</max_angle>
                     </horizontal>
                 </scan>
                 <range>
@@ -116,7 +119,6 @@
                 </noise>
             </ray>
             <plugin name="lidar_controller" filename="libgazebo_ros_ray_sensor.so">
-                <topicName>/lidar/scan</topicName>
                 <output_type>sensor_msgs/LaserScan</output_type>
                 <frameName>lidar_link</frameName>
             </plugin>
