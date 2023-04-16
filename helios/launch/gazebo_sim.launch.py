@@ -34,33 +34,30 @@ def generate_launch_description():
 
     # Run the spawner node from the gazebo_ros package. The entity name
     # doesn't really matter if you only have a single robot.
-    # NOTE: need to change to work with ignition
     spawn_entity = Node(package='gazebo_ros', executable='spawn_entity.py',
                         arguments=['-topic', 'robot_description',
                                    '-entity', 'helios'],
                         output='screen')
 
-    # #NOTE not currently working
-    # # Run spawner node for differential drive controller
-    # diff_drive_spawner = Node(
-    #     package='controller_manager',
-    #     executable='spawner.py',
-    #     arguments=['diff_cont'],
-    # )
+    # Run spawner node for differential drive controller
+    diff_drive_spawner = Node(
+        package='controller_manager',
+        executable='spawner',
+        arguments=['diff_cont'],
+    )
 
-    # #NOTE not currently working
-    # # Run spawner node for joint broadcaster
-    # joint_broad_spawner = Node(
-    #     package='controller_manager',
-    #     executable='spawner.py',
-    #     arguments=['joint_broad'],
-    # )
+    # Run spawner node for joint broadcaster
+    joint_broad_spawner = Node(
+        package='controller_manager',
+        executable='spawner',
+        arguments=['joint_broad'],
+    )
 
     # Launch them all!
     return LaunchDescription([
         rsp,
         gazebo,
         spawn_entity,
-        # diff_drive_spawner,
-        # joint_broad_spawner,
+        diff_drive_spawner,
+        joint_broad_spawner,
     ])

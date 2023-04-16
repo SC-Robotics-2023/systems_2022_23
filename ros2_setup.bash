@@ -27,6 +27,7 @@ sudo apt-get upgrade -y
 sudo apt install python3-colcon-common-extensions -y
 sudo apt install ros-humble-desktop -y
 sudo apt install python3-rosdep2 -y
+rosdep update
 
 
 # Set up ROS environment
@@ -40,3 +41,7 @@ echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> ~/.b
 
 # Install git
 sudo apt install git -y
+
+
+
+##FOR DRIVE - separate into separate bash script##
