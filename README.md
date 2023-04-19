@@ -3,10 +3,10 @@
 
 Install dependencies and tools using `systems_setup.bash`
 
-> NOTE: Make sure to source your overlay before running any commands
+> Make sure to source your overlay before running any commands
 	source install/setup.bash
 
-> NOTE: make sure to run all commands from your ROS/colcon workspace
+> make sure to run all commands from your ROS/colcon workspace
 
 ### Run Rviz
 	> rviz2 -d src/systems_2022_23/helios/config/rover_view.rviz
@@ -17,7 +17,7 @@ Install dependencies and tools using `systems_setup.bash`
 ### Run Simulation (robot state publisher + gazebo + rviz)
 	> ros2 launch helios gazebo_sim.launch.py
 	
-> NOTE: if you want to see the rover move in rviz, change 
+> if you want to see the rover move in rviz, change 
 Fixed Frame from base_link to odom
 
 ### Run keyboard controller
@@ -26,4 +26,4 @@ Fixed Frame from base_link to odom
 ### Run gamepad controller
 	>ros2 run driver gamepad_diff_drive
 
-> NOTE: make sure to have drive repo cloned and built
+> make sure to have drive repo cloned and built
