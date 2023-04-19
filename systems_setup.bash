@@ -13,7 +13,3 @@ sudo apt install ros-humble-ros2-control ros-humble-ros2-controllers ros-humble-
 # Install ros2 slamm toolbox
 sudo apt install ros-humble-slam-toolbox -y
 
-
-
-# Install any missing dependencies
-rosdep install --from-paths src --ignore-src -r -y

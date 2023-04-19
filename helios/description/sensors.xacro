@@ -14,6 +14,7 @@
     <xacro:property name="zed2i_height" value="0.03"/>
     <xacro:property name="zed2i_mass" value="0.01"/>
 
+
     <!-- camera pole joint -->
     <joint name="camera_pole_joint" type="fixed">
         <parent link="chassis_link"/>
@@ -38,7 +39,7 @@
             </geometry>
         </collision>
 
-        <xacro:inertial_box mass="${camera_pole_mass}" x="0" y="0" z="${camera_pole_height/2}">
+        <xacro:inertial_box mass="${camera_pole_mass}" x="${camera_pole_width}" y="${camera_pole_width}" z="${camera_pole_height}">
             <origin xyz="0 0 ${camera_pole_height/2}" rpy="0 0 0"/>
         </xacro:inertial_box>
     </link>
@@ -67,7 +68,7 @@
             </geometry>
         </collision>
 
-        <xacro:inertial_box mass="${zed2i_mass}" x="0" y="0" z="${zed2i_height/2}">
+        <xacro:inertial_box mass="${zed2i_mass}" x="${zed2i_width}" y="${zed2i_length}" z="${zed2i_height}">
             <origin xyz="0 0 ${zed2i_height/2}" rpy="0 0 0"/>
         </xacro:inertial_box>
     </link>
@@ -78,6 +79,7 @@
     <xacro:property name="lidar_height" value="0.041"/>
     <xacro:property name="lidar_radius" value="0.038"/>
     <xacro:property name="lidar_mass" value="0.19"/>
+    
     
     <!-- LIDAR Joint -->
     <joint name="lidar_joint" type="fixed">

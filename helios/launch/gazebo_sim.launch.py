@@ -4,6 +4,7 @@ from ament_index_python.packages import get_package_share_directory
 
 from launch import LaunchDescription
 from launch.actions import IncludeLaunchDescription
+from launch.actions import TimerAction
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 from launch_ros.actions import Node
@@ -14,6 +15,8 @@ def generate_launch_description():
     # package. Force sim time to be enabled
     # !!! MAKE SURE YOU SET THE PACKAGE NAME CORRECTLY !!!
 
+    use_sim_time = 'true'
+
     package_name = 'helios'
 
     # Launch the robot state publisher
@@ -21,7 +24,7 @@ def generate_launch_description():
                 PythonLaunchDescriptionSource([os.path.join(
                     get_package_share_directory(package_name),
                     'launch', 'rsp.launch.py'
-                )]), launch_arguments={'use_sim_time': 'true'}.items()
+                )]), launch_arguments={'use_sim_time': use_sim_time}.items()
     )
 
     # Include the Gazebo launch file, provided by the gazebo_ros package
@@ -59,15 +62,18 @@ def generate_launch_description():
                 PythonLaunchDescriptionSource([os.path.join(
                     get_package_share_directory(package_name),
                     'launch', 'rviz.launch.py'
-                )]), launch_arguments={'use_sim_time': 'true'}.items()
+                )]), launch_arguments={'use_sim_time': use_sim_time}.items()
     )
 
     # Launch them all!
     return LaunchDescription([
-        rsp,
-        gazebo,
-        spawn_entity,
-        diff_drive_spawner,
-        joint_broad_spawner,
-        rviz,
+            rsp,
+            gazebo,
+            spawn_entity,
+            diff_drive_spawner,
+            joint_broad_spawner,
+            # TimerAction(
+            #     period=3.0,
+            #     actions=[rviz,],
+            # ),
     ])
