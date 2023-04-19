@@ -16,6 +16,7 @@ def generate_launch_description():
 
     package_name = 'helios'
 
+    # Launch the robot state publisher
     rsp = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
                     get_package_share_directory(package_name),
@@ -53,6 +54,14 @@ def generate_launch_description():
         arguments=['joint_broad'],
     )
 
+    # Launch rviz2
+    rviz = IncludeLaunchDescription(
+                PythonLaunchDescriptionSource([os.path.join(
+                    get_package_share_directory(package_name),
+                    'launch', 'rviz.launch.py'
+                )]), launch_arguments={'use_sim_time': 'true'}.items()
+    )
+
     # Launch them all!
     return LaunchDescription([
         rsp,
@@ -60,4 +69,5 @@ def generate_launch_description():
         spawn_entity,
         diff_drive_spawner,
         joint_broad_spawner,
+        rviz,
     ])
