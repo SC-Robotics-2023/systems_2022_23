@@ -32,7 +32,6 @@ rosdep update
 
 # Set up ROS environment
 echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
-echo "export ROS_DOMAIN_ID=5" >> ~/.bashrc
 
 # Set up Colcon features
 echo "source /usr/share/colcon_cd/function/colcon_cd.sh" >> ~/.bashrc
